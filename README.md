@@ -1,6 +1,8 @@
 # Social Distancing Simulator
 Made by Dave Jha
 
+A WWDC 2020 Swift Student Challenge submission
+
 ## Recommendations for simulation
 **It is recommended that the user turns off "Enable Results", and plays in full screen mode. **
 Please note that you may experience lag if you decide to have a lot of people. Enjoy! :)
