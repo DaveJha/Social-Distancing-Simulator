@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>/*
+ 
+ # Social Distancing Simulator
+ Made by Dave Jha
+ 
+ ## Recommendations for simulation
+ **It is recommended that the user turns off "Enable Results", and plays in full screen mode. **
+ Please note that you may experience lag if you decide to have a lot of people. Enjoy! :)
+ 
+ ## Overview
+ This social distancing simulator attempts to show users the effects they have on public health by social distancing. This idea was inspired by an article by The Washington Post in mid-March that attempted to visualize in an easy way what the effect of social distancing is. This article was helpful, but as we discovered more about the virus, such as the ability to be asymptomatic, I wanted to take this into account visually and develop this for Swift.
+ 
+ People are represented as Dots. A red dot is infected, and a grey dot is healthy. Green dots are infected patients that recover. This is set to 10 seconds after a dot gets infected. There is a mode that can be set that allows aymptomatic dots. These dots do not turn red when infected, and are determined randomly. Roughly 50% of these dots will show that they are infected.
+ 
+ ## Graph 
+ I created a graph to further visually aid the user in seeing how quickly a virus can spread in an environment. It logs the amount of infected and recovered (if enabled) people every half of second and stops if the infected is the total number of dots or zero.
+ 
+ ## Configuration
+ 
+ When the playground is run, a configuration screen is shown. Here is a breakdown of what each feature does.
+ 
+ ### Number of people (dots)
+ This configures the amount of people (dots) on the screen. Minimum value is 5. Maximum is 100.
+ 
+ ### Speed level 
+ This controls the speed at which the dots operate on a scale from 1 - 5.
+ 
+ ### Asymptomatic people
+ This will allow some dots to appear unaffected when colliding with an infected dot. They will count towards the infected total, but will not appear infected.
+ 
+ ### Recover
+ This will allow infected dots to recover the virus after a 10 second cooldown.
+ 
+ ### Social Distancing
+ This will allow you to set a percentage of dots that will "socially distance", and not move around. The infected dot **may socially distance**. It is fun to observe how much longer it takes for all people to be infected!
+ 
+ ### Forced Distancing
+ This will create a partition between to sides of the map that gradually opens. It is there to demonstrate what a country like China did, and how effective it was until they generally opened up.
+ 
+ ### Game Mode
+ This allows the user to take control a dot and try to manuever around the infected dots! Have fun and be careful!
+ 
+ */
+
+import SpriteKit
+import PlaygroundSupport
+import UIKit
+import SwiftUI
+
+// Set up SK View
+let skView = SKView(frame: .zero)
+
+// Used to determine width of screen
+let screen = UIScreen.main.bounds.size
+
+// Show the configure screen first before simulation
+let configureScene = ConfigureScene(size: screen)
+configureScene.scaleMode = .aspectFill
+configureScene.backgroundColor = UIColor(hue: 1.0, saturation: 0.0, brightness: 0.0, alpha: 0.8)
+skView.presentScene(configureScene)
+skView.preferredFramesPerSecond = 60
+
+// Overlay the SwiftUI of the config screen
+var configureView = ConfigureView()
+configureView.configScene = configureScene
+let configControl = UIHostingController(rootView: configureView)
+configControl.view.backgroundColor = UIColor(hue: 1.0, saturation: 0.0, brightness: 0.0, alpha: 0.8)
+configControl.view.frame = CGRect(x: 0, y: 0, width: screen.width*2, height: screen.height*2)
+
+skView.addSubview(configControl.view)
+
+PlaygroundPage.current.liveView = skView
+PlaygroundPage.current.wantsFullScreenLiveView = true
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 3672}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{0, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>
